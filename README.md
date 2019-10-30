@@ -1,2 +1,0 @@
-# practiceclub
-Created with CodeSandbox
