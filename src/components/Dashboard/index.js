@@ -48,17 +48,14 @@ const divStyle = {
 const Dashboard = () => {
   const [times, setTimes] = useState([]);
 
-  const [selectedId, setSelectedId] = useState();
-  const [current, setCurrent] = useState({ id: 1, title: "test1" });
-
   // INITIALIZE
   useEffect(() => {
     setTimes([
-      { id: 1, title: "test1" },
-      { id: 2, title: "test2" },
-      { id: 3, title: "test4123123" },
-      { id: 4, title: "test5" },
-      { id: 5, title: "test6" }
+      { id: 1, title: "Design", time: 0 },
+      { id: 2, title: "Programming", time: 0 },
+      { id: 3, title: "Marketing", time: 0 },
+      { id: 4, title: "Code Review", time: 0 },
+      { id: 5, title: "Organizing", time: 1 }
     ]);
   }, []);
 
@@ -72,10 +69,12 @@ const Dashboard = () => {
     ]);
   };
 
-  const selectCurrentTime = selectedId => {
-    let selected = times.find(time => time.id === selectedId);
-    setCurrent(selected);
-    setSelectedId(selectedId);
+  const saveTime = (index, time) => {
+    console.log("save time" + index + " - " + time);
+
+    let newArr = [...times];
+    newArr[index].time = time;
+    setTimes(newArr);
   };
 
   return (
@@ -91,14 +90,8 @@ const Dashboard = () => {
               <div className="w-1/3 px-2">
                 <AddTimeEntryForm addTime={addTime} />
               </div>
-              <div className="w-1/3 px-2">
-                <TimesList
-                  selectCurrentTime={selectCurrentTime}
-                  times={times}
-                />
-              </div>
-              <div className="w-1/3 px-2">
-                <Timer current={current} />
+              <div className="w-2/3 px-2">
+                <TimesList times={times} saveTime={saveTime} />
               </div>
             </div>
           </div>

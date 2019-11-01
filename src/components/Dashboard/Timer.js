@@ -1,40 +1,58 @@
-import React, { useState } from "react";
-import firebase from "../../model/firebase";
+import React, { useState, useEffect } from "react";
 
 const Timer = props => {
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
 
-  const onSubmit = e => {
-    e.preventDefault();
-  };
+  function toggle() {
+    setIsActive(!isActive);
+  }
+
+  function reset() {
+    setSeconds(0);
+    setIsActive(false);
+  }
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
 
   return (
-    <>
-      <form
-        className="bg-white shadow-md rounded p-10 flex flex-col items-center content-center"
-        onSubmit={onSubmit}
-      >
-        <h2 className="text-xl font-bold mb-10">{props.current.title} </h2>
-
-        <div className="md:flex md:items-center">
-          <button className="shadow bg-purple-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mb-10 rounded">
-            Start
-          </button>
-        </div>
-        <div className="md:flex md:items-center">
-          <button className="shadow bg-purple-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 mb-10  rounded">
-            Stop
-          </button>
-        </div>
-
-        <div className="md:flex md:items-center">
-          <button className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-            Save
-          </button>
-        </div>
-      </form>
-    </>
+    <div className="flex">
+      <div className="flex-1 text-center">{seconds}s</div>
+      <div className="flex-2">
+        <button
+          className={
+            isActive
+              ? "w-20 mr-2 bg-teal-500 text-white font-bold py-2 px-4 rounded"
+              : "w-20 mr-2 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+          }
+          onClick={toggle}
+        >
+          {isActive ? "Stop" : "Start"}
+        </button>
+        <button
+          className="mr-2 w-20 bg-purple-500  text-white font-bold py-2 px-4 rounded"
+          onClick={reset}
+        >
+          Reset
+        </button>
+        <button
+          className=" w-20 bg-teal-500  text-white font-bold py-2 px-4 rounded"
+          onClick={() => props.saveTime(props.index, seconds)}
+        >
+          Save
+        </button>
+      </div>
+    </div>
   );
 };
 
