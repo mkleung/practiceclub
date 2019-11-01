@@ -48,6 +48,9 @@ const divStyle = {
 const Dashboard = () => {
   const [times, setTimes] = useState([]);
 
+  const [selectedId, setSelectedId] = useState();
+  const [current, setCurrent] = useState({ id: 1, title: "test1" });
+
   // INITIALIZE
   useEffect(() => {
     setTimes([
@@ -60,7 +63,6 @@ const Dashboard = () => {
   }, []);
 
   const addTime = title => {
-    console.log(title);
     setTimes(prevTime => [
       ...prevTime,
       {
@@ -68,6 +70,12 @@ const Dashboard = () => {
         title: title
       }
     ]);
+  };
+
+  const selectCurrentTime = selectedId => {
+    let selected = times.find(time => time.id === selectedId);
+    setCurrent(selected);
+    setSelectedId(selectedId);
   };
 
   return (
@@ -84,10 +92,13 @@ const Dashboard = () => {
                 <AddTimeEntryForm addTime={addTime} />
               </div>
               <div className="w-1/3 px-2">
-                <TimesList times={times} />
+                <TimesList
+                  selectCurrentTime={selectCurrentTime}
+                  times={times}
+                />
               </div>
               <div className="w-1/3 px-2">
-                <Timer />
+                <Timer current={current} />
               </div>
             </div>
           </div>
