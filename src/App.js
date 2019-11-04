@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Calendar from "./components/Calendar";
 
 //test
 // firebase.firestore().collection("times").add({
@@ -25,8 +26,10 @@ function App() {
         <div>
           <Header />
           {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/" component={Dashboard} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/calendar" component={Calendar} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={Home} />
+          {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Footer />

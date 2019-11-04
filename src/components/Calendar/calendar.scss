@@ -1,0 +1,16 @@
+.calendar {
+  padding: 40px;
+
+  .title {
+    text-align: right;
+    font-size: 2em;
+    .year {
+      color: grey;
+    }
+
+    .month {
+      color: red;
+      text-transform: uppercase;
+    }
+  }
+}

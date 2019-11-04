@@ -33,11 +33,15 @@ const Home = () => {
               semper urna quis eros dictum congue.
             </p>
           </div>
-          <div className="w-full md:w-1/2" />
+          <div className="w-full md:w-1/2">
+            <img src="1.png" alt="" />
+          </div>
         </div>
 
         <div className="flex items-center flex-wrap mb-20">
-          <div className="w-full md:w-1/2" />
+          <div className="w-full md:w-1/2">
+            <img src="2.png" alt="" />
+          </div>
           <div className="w-full md:w-1/2 pl-10">
             <h4 className="text-3xl text-gray-800 font-bold mb-3">Feature 2</h4>
             <p className="text-gray-600 mb-8">
@@ -69,7 +73,9 @@ const Home = () => {
               dictum leo, id tincidunt massa.
             </p>
           </div>
-          <div className="w-full md:w-1/2" />
+          <div className="w-full md:w-1/2">
+            <img src="3.png" alt="" />
+          </div>
         </div>
       </section>
     </>
