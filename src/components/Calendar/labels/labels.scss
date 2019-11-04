@@ -1,13 +1,21 @@
 .weekdayLabels {
 
   margin-top: 20px;
-  color: black;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
+  color: #CCC;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
   .weeklyLabel {
     width: calc(100% / 7);
-display: inline-block;
-  text-align:center;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: #FF7C1F;
+    color: #fff;
+    height: 50px;
+
   }
 }

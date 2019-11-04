@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./calendar.scss";
-import Weekdaylabels from "./labels";
+import Labels from "./labels";
 import Dates from "./dates";
 
 const divStyle = {
@@ -25,6 +25,10 @@ const Calendar = () => {
               <span className="month">{month}</span>{" "}
               <span className="year">{year}</span>
             </div>
+
+            <Labels />
+
+            <Dates />
           </div>
         </div>
       </div>
