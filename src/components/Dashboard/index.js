@@ -48,14 +48,14 @@ const divStyle = {
 const Dashboard = () => {
   const [times, setTimes] = useState([]);
 
+  const [date, setDate] = useState();
+
   // INITIALIZE
   useEffect(() => {
     setTimes([
-      { id: 1, title: "Design", time: 0 },
-      { id: 2, title: "Programming", time: 0 },
-      { id: 3, title: "Marketing", time: 0 },
-      { id: 4, title: "Code Review", time: 0 },
-      { id: 5, title: "Organizing", time: 1 }
+      { id: 1, title: "Design", time: 0, date: "" },
+      { id: 2, title: "Programming", time: 0, date: "" },
+      { id: 3, title: "Marketing", time: 0, date: "" }
     ]);
   }, []);
 
@@ -70,11 +70,10 @@ const Dashboard = () => {
   };
 
   const saveTime = (index, time) => {
-    console.log("save time" + index + " - " + time);
-
-    let newArr = [...times];
-    newArr[index].time = time;
-    setTimes(newArr);
+    let saveArray = [...times];
+    saveArray[index].time = time;
+    saveArray[index].date = new Date().toLocaleString();
+    setTimes(saveArray);
   };
 
   return (
