@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import TimesList from "./TimeList";
-import AddTimeEntryForm from "./AddTime";
+import AddTaskForm from "./AddTask";
 import Timer from "./Timer";
 import firebase from "../../model/firebase";
+import { TaskContext } from "../../controller/TaskContext";
 
 const divStyle = {
   background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
@@ -46,18 +47,7 @@ const divStyle = {
 // }
 
 const Dashboard = () => {
-  const [times, setTimes] = useState([]);
-
-  const [date, setDate] = useState();
-
-  // INITIALIZE
-  useEffect(() => {
-    setTimes([
-      { id: 1, title: "Design", time: 0, date: "" },
-      { id: 2, title: "Programming", time: 0, date: "" },
-      { id: 3, title: "Marketing", time: 0, date: "" }
-    ]);
-  }, []);
+  const { times, setTimes } = useContext(TaskContext);
 
   const addTime = title => {
     setTimes(prevTime => [
@@ -87,7 +77,7 @@ const Dashboard = () => {
           <div className="px-2">
             <div className="flex -mx-2">
               <div className="w-1/3 px-2">
-                <AddTimeEntryForm addTime={addTime} />
+                <AddTaskForm addTime={addTime} />
               </div>
               <div className="w-2/3 px-2">
                 <TimesList times={times} saveTime={saveTime} />

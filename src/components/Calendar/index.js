@@ -1,16 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./calendar.scss";
 import Labels from "./labels";
 import Dates from "./dates";
+import { TaskContext } from "../../controller/TaskContext";
 
 const divStyle = {
   background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
 };
 
 const Calendar = () => {
+  const { times } = useContext(TaskContext);
+
+  const [completedTimes, setCompletedTimes] = useState([]);
+
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
+
+  // INITIALIZE
+  useEffect(() => {
+    let currentDate = new Date().toLocaleString();
+    console.log(currentDate.split(",")[0]);
+  }, []);
 
   return (
     <div className="py-20" style={divStyle}>

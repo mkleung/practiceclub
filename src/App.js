@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./controller/AuthContext";
+import { TaskProvider } from "./controller/TaskContext";
 import PrivateRoute from "./components/PrivateRoute";
 
+import Practice from "./components/Practice";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -26,8 +28,12 @@ function App() {
         <div>
           <Header />
           {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/calendar" component={Calendar} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <TaskProvider>
+            <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/practice" component={Practice} />
+          </TaskProvider>
+
           <Route exact path="/" component={Home} />
           {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
           <Route exact path="/login" component={Login} />

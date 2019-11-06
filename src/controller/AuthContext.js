@@ -6,6 +6,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = props => {
   const [currentUser, setCurrentUser] = useState(null);
 
+  // LOGIN OR REGISTER
   useEffect(() => {
     firebase.auth().onAuthStateChanged(setCurrentUser);
   }, []);

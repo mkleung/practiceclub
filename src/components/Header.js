@@ -20,6 +20,13 @@ const Header = props => {
 
           <Link
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            to="/practice"
+          >
+            Practice
+          </Link>
+
+          <Link
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
             to="/calendar"
           >
             Calendar

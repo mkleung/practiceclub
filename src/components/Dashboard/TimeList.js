@@ -12,7 +12,9 @@ const TimeList = props => {
 
   return (
     <div className="bg-white shadow-md rounded p-10 text-center">
-      <h2 className="text-xl font-bold mb-2 ">{getCurrentDate()}</h2>
+      <h2 className="text-xl font-bold mb-2 ">
+        Daily Tasks for {getCurrentDate()}
+      </h2>
       <table className="table-auto w-full">
         <thead>
           <tr>
@@ -29,10 +31,6 @@ const TimeList = props => {
                 {time.id} -{time.title}
               </td>
               <td className="border px-4 py-2">{time.time}s</td>
-              <td className="border px-4 py-2">{time.date}</td>
-              <td className="border px-4 py-2">
-                <Timer index={index} saveTime={props.saveTime} />
-              </td>
             </tr>
           ))}
         </tbody>
