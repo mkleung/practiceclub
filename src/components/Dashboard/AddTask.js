@@ -1,33 +1,19 @@
 import React, { useState } from "react";
 import firebase from "../../model/firebase";
 
-const AddTaskForm = ({ addTime }) => {
+const AddTaskForm = ({ addTask }) => {
   const [title, setTitle] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
 
-    addTime(title);
+    addTask(title);
   };
 
-  // const onSubmit = e => {
-  //   e.preventDefault();
-  //   firebase
-  //     .firestore()
-  //     .collection("times")
-  //     .add({
-  //       title: title,
-  //       time_seconds: parseInt(time)
-  //     })
-  //     .then(() => {
-  //       setTitle("");
-  //       setTime("");
-  //     });
-  // };
   return (
     <>
       <form className="bg-white shadow-md rounded p-10" onSubmit={onSubmit}>
-        <h2 className="text-xl font-bold mb-2">Add Daily Task</h2>
+        <h2 className="text-xl font-bold mb-2">Add Task</h2>
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
             <label

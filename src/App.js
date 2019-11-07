@@ -13,12 +13,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Calendar from "./components/Calendar";
 
-//test
-// firebase.firestore().collection("times").add({
-//   title: 'test',
-//   time_seconds: 45
-// })
-
 // https://scotch.io/tutorials/build-a-beautiful-landing-page-with-tailwind-css
 
 function App() {

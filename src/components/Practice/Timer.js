@@ -27,7 +27,7 @@ const Timer = props => {
 
   return (
     <div className="flex">
-      <div className=" flex justify-center items-center flex-1 text-center">
+      <div className=" flex justify-center items-center flex-2 mr-5 text-center">
         {seconds}s
       </div>
       <div className="flex-2">
@@ -41,12 +41,6 @@ const Timer = props => {
         >
           {isActive ? "Stop" : "Start"}
         </button>
-        {/* <button
-          className="mr-2 w-20 bg-purple-500  text-white font-bold py-2 px-4 rounded"
-          onClick={reset}
-        >
-          Reset
-        </button> */}
         <button
           className=" w-20 bg-teal-500  text-white font-bold py-2 px-4 rounded"
           onClick={() => props.saveTime(props.index, seconds)}

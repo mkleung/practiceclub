@@ -9,6 +9,14 @@ const divStyle = {
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
 
+  const saveTime = (index, time) => {
+    console.log(index, time);
+    // let saveArray = [...times];
+    // saveArray[index].time = time;
+    // saveArray[index].date = new Date().toLocaleString();
+    // setTasks(saveArray);
+  };
+
   return (
     <div className="py-20" style={divStyle}>
       <div className="container mx-auto px-6">
@@ -19,7 +27,7 @@ const Dashboard = () => {
         <div className="flex justify-center">
           <div className="px-2">
             <div className="flex -mx-2 bg-white shadow-md rounded p-10 text-center">
-              <PracticeList tasks={tasks} />
+              <PracticeList tasks={tasks} saveTime={saveTime} />
             </div>
           </div>
         </div>

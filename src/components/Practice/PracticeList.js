@@ -20,7 +20,6 @@ const TimeList = props => {
           <tr>
             <th className="px-4 py-2">SELECT TITLE</th>
             <th className="px-4 py-2">TIME</th>
-            <th className="px-4 py-2">Date</th>
             <th className="px-4 py-2">ACTIONS</th>
           </tr>
         </thead>
@@ -29,6 +28,10 @@ const TimeList = props => {
             <tr className={index % 2 === 0 ? "" : "bg-gray-100"} key={index}>
               <td className="border px-4 py-2">
                 {task.id} -{task.title}
+              </td>
+              <td className="border px-4 py-2" />
+              <td className="border px-4 py-2">
+                <Timer />
               </td>
             </tr>
           ))}

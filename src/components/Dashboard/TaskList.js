@@ -1,5 +1,5 @@
 import React from "react";
-import Timer from "./Timer";
+
 const TimeList = props => {
   const getCurrentDate = (separator = "") => {
     let newDate = new Date();
@@ -12,25 +12,24 @@ const TimeList = props => {
 
   return (
     <div className="bg-white shadow-md rounded p-10 text-center">
-      <h2 className="text-xl font-bold mb-2 ">
-        Daily Tasks for {getCurrentDate()}
-      </h2>
+      <h2 className="text-xl font-bold mb-2 ">Tasks List</h2>
       <table className="table-auto w-full">
         <thead>
           <tr>
-            <th className="px-4 py-2">SELECT TITLE</th>
-            <th className="px-4 py-2">TIME</th>
-            <th className="px-4 py-2">Date</th>
+            <th className="px-4 py-2">ID</th>
+            <th className="px-4 py-2">TITLE</th>
             <th className="px-4 py-2">ACTIONS</th>
           </tr>
         </thead>
         <tbody>
-          {props.times.map((time, index) => (
+          {props.tasks.map((task, index) => (
             <tr className={index % 2 === 0 ? "" : "bg-gray-100"} key={index}>
+              <td className="border px-4 py-2">{task.id}</td>
+              <td className="border px-4 py-2">{task.title}</td>
               <td className="border px-4 py-2">
-                {time.id} -{time.title}
+                <button className="mr-5">Edit</button>
+                <button>Delete</button>
               </td>
-              <td className="border px-4 py-2">{time.time}s</td>
             </tr>
           ))}
         </tbody>
