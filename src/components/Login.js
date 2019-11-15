@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import firebase from "../model/firebase";
+import firebase from "../database/firebase";
 import { AuthContext } from "../controller/AuthContext";
 
 const divStyle = {

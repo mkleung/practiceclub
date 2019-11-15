@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../controller/AuthContext";
-import firebase from "../model/firebase";
+import firebase from "../database/firebase";
 
 const Header = props => {
   const { currentUser } = useContext(AuthContext);
@@ -18,19 +18,12 @@ const Header = props => {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow" />
 
-          <Link
+          {/* <Link
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
             to="/practice"
           >
             Practice
-          </Link>
-
-          <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-            to="/calendar"
-          >
-            Calendar
-          </Link>
+          </Link> */}
 
           <Link
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
@@ -39,6 +32,12 @@ const Header = props => {
             Dashboard
           </Link>
 
+          {/* <Link
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            to="/calendar"
+          >
+            Calendar
+          </Link> */}
           <div>
             {currentUser && (
               <Link

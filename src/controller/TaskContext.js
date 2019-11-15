@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-//import firebase from "../model/firebase";
+import Task from "../models/Task";
+import Time from "../models/Time";
+
+//import firebase from "../database/firebase";
 
 export const TaskContext = React.createContext();
 
@@ -10,9 +13,9 @@ export const TaskProvider = props => {
   // INITIALIZE TIMES
   useEffect(() => {
     setTasks([
-      { id: 1, title: "Design" },
-      { id: 2, title: "Programming" },
-      { id: 3, title: "Marketing" }
+      new Task(1, "Design", ["Monday", "Wednesday"]),
+      new Task(2, "Marketing", ["Tuesday"]),
+      new Task(3, "Programming", ["Friday"])
     ]);
 
     setTimes([

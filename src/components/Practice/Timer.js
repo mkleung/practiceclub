@@ -26,28 +26,26 @@ const Timer = props => {
   }, [isActive, seconds]);
 
   return (
-    <div className="flex">
-      <div className=" flex justify-center items-center flex-2 mr-5 text-center">
-        {seconds}s
-      </div>
-      <div className="flex-2">
-        <button
-          className={
-            isActive
-              ? "w-20 mr-2 bg-teal-500 text-white font-bold py-2 px-4 rounded"
-              : "w-20 mr-2 bg-purple-500 text-white font-bold py-2 px-4 rounded"
-          }
-          onClick={toggle}
-        >
-          {isActive ? "Stop" : "Start"}
-        </button>
-        <button
-          className=" w-20 bg-teal-500  text-white font-bold py-2 px-4 rounded"
-          onClick={() => props.saveTime(props.index, seconds)}
-        >
-          Save
-        </button>
-      </div>
+    <div className="flex justify-center items-center flex-col">
+      <div>{seconds}s</div>
+
+      <button
+        className={
+          isActive
+            ? "w-20 bg-teal-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+            : "w-20 bg-purple-500 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+        }
+        onClick={toggle}
+      >
+        {isActive ? "STOP" : "START"}
+      </button>
+      <button
+        style={{ backgroundColor: "#FF7C1F" }}
+        className=" w-20 bg-teal-500  text-white font-bold py-2 px-4 rounded"
+        onClick={() => props.saveTime(props.index, seconds)}
+      >
+        SAVE
+      </button>
     </div>
   );
 };

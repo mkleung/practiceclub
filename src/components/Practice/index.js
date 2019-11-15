@@ -9,6 +9,16 @@ const divStyle = {
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
 
+  let today = new Date().getDay();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
   const saveTime = (index, time) => {
     console.log(index, time);
     // let saveArray = [...times];
@@ -21,14 +31,16 @@ const Dashboard = () => {
     <div className="py-20" style={divStyle}>
       <div className="container mx-auto px-6">
         <div className="flex justify-center">
-          <h2 className="text-4xl font-bold mb-5 text-white">Practice Time</h2>
+          <h2 className="text-4xl font-bold mb-5 text-white">Practice</h2>
         </div>
 
-        <div className="flex justify-center">
-          <div className="px-2">
-            <div className="flex -mx-2 bg-white shadow-md rounded p-10 text-center">
-              <PracticeList tasks={tasks} saveTime={saveTime} />
-            </div>
+        <div className="flex justify-center flex-row">
+          <div className="flex-1 px-2">
+            <PracticeList
+              title={weekday[today]}
+              tasks={tasks}
+              saveTime={saveTime}
+            />
           </div>
         </div>
       </div>

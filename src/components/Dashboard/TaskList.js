@@ -11,14 +11,18 @@ const TimeList = props => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded p-10 text-center">
-      <h2 className="text-xl font-bold mb-2 ">Tasks List</h2>
+    <div className="pt-10">
+      <h2 className="text-xl font-bold mb-2 ">Daily Tasks List</h2>
       <table className="table-auto w-full">
         <thead>
           <tr>
-            <th className="px-4 py-2">ID</th>
-            <th className="px-4 py-2">TITLE</th>
-            <th className="px-4 py-2">ACTIONS</th>
+            <th className="px-4 py-2 text-left">Monday</th>
+            <th className="px-4 py-2 text-left">Tuesday</th>
+            <th className="px-4 py-2 text-left">Wednesday</th>
+            <th className="px-4 py-2 text-left">Thursday</th>
+            <th className="px-4 py-2 text-left">Friday</th>
+            <th className="px-4 py-2 text-left">Saturday</th>
+            <th className="px-4 py-2 text-left">Sunday</th>
           </tr>
         </thead>
         <tbody>
@@ -27,8 +31,16 @@ const TimeList = props => {
               <td className="border px-4 py-2">{task.id}</td>
               <td className="border px-4 py-2">{task.title}</td>
               <td className="border px-4 py-2">
-                <button className="mr-5">Edit</button>
-                <button>Delete</button>
+                <ul>
+                  {task.days.map((day, index) => {
+                    return <li key={index}>{day}</li>;
+                  })}
+                </ul>
+              </td>
+              <td className="border px-4 py-2">
+                <button onClick={() => props.deleteTask(task.id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

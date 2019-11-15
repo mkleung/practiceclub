@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./controller/AuthContext";
 import { TaskProvider } from "./controller/TaskContext";

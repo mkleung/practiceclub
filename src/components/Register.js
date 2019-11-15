@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
-import firebase from "../model/firebase";
+import firebase from "../database/firebase";
 
 const divStyle = {
   background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
