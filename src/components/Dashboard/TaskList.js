@@ -1,4 +1,5 @@
 import React from "react";
+import Task from "./Task";
 
 const TimeList = props => {
   const getCurrentDate = (separator = "") => {
@@ -10,40 +11,73 @@ const TimeList = props => {
     return `${month}/${date}/${year}`;
   };
 
+  let dates = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
+  let mondays = props.tasks.filter(item => {
+    return item.days.includes("Monday");
+  });
+
+  let tuesdays = props.tasks.filter(item => {
+    return item.days.includes("Tuesday");
+  });
+
+  let wednesdays = props.tasks.filter(item => {
+    return item.days.includes("Wednesday");
+  });
+
+  let thursdays = props.tasks.filter(item => {
+    return item.days.includes("Thursday");
+  });
+
+  let fridays = props.tasks.filter(item => {
+    return item.days.includes("Friday");
+  });
+
+  let saturdays = props.tasks.filter(item => {
+    return item.days.includes("Saturday");
+  });
+
+  let sundays = props.tasks.filter(item => {
+    return item.days.includes("Sunday");
+  });
+
   return (
     <div className="pt-10">
       <h2 className="text-xl font-bold mb-2 ">Daily Tasks List</h2>
       <table className="table-auto w-full">
         <thead>
           <tr>
-            <th className="px-4 py-2 text-left">Monday</th>
-            <th className="px-4 py-2 text-left">Tuesday</th>
-            <th className="px-4 py-2 text-left">Wednesday</th>
-            <th className="px-4 py-2 text-left">Thursday</th>
-            <th className="px-4 py-2 text-left">Friday</th>
-            <th className="px-4 py-2 text-left">Saturday</th>
-            <th className="px-4 py-2 text-left">Sunday</th>
+            {dates.map((day, index) => {
+              return (
+                <th key={index} className="px-4 py-2 text-left">
+                  {day}
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>
-          {props.tasks.map((task, index) => (
-            <tr className={index % 2 === 0 ? "" : "bg-gray-100"} key={index}>
-              <td className="border px-4 py-2">{task.id}</td>
-              <td className="border px-4 py-2">{task.title}</td>
-              <td className="border px-4 py-2">
-                <ul>
-                  {task.days.map((day, index) => {
-                    return <li key={index}>{day}</li>;
-                  })}
-                </ul>
-              </td>
-              <td className="border px-4 py-2">
-                <button onClick={() => props.deleteTask(task.id)}>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+          <tr>
+            {dates.map((day, index) => {
+              return (
+                <td key={index} className="border px-4 py-2">
+                  <Task
+                    tasks={props.tasks.filter(item => {
+                      return item.days.includes(day);
+                    })}
+                  />
+                </td>
+              );
+            })}
+          </tr>
         </tbody>
       </table>
     </div>

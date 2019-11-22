@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import AddTaskModal from "./AddTaskModal";
 import TaskList from "./TaskList";
-import AddTask from "./AddTask";
 import { TaskContext } from "../../controller/TaskContext";
 
 const divStyle = {
@@ -39,17 +38,6 @@ const Dashboard = () => {
 
           <TaskList tasks={tasks} deleteTask={deleteTask} />
         </div>
-
-        {/* 
-        <div className="flex justify-center flex-row">
-          <div className="w-1/2 px-2">
-            <TaskList tasks={tasks} deleteTask={deleteTask} />
-          </div>
-          <div className="w-1/2 px-2">
-            <AddTask addTask={addTask} />
-          </div>
-
-        </div> */}
       </div>
     </div>
   );

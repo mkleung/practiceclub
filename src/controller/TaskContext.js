@@ -14,8 +14,9 @@ export const TaskProvider = props => {
   useEffect(() => {
     setTasks([
       new Task(1, "Design", ["Monday", "Wednesday"]),
-      new Task(2, "Marketing", ["Tuesday"]),
-      new Task(3, "Programming", ["Friday"])
+      new Task(2, "Programming", ["Monday", "Tuesday", "Thursday"]),
+      new Task(3, "Marketing", ["Monday", "Thursday", "Friday"]),
+      new Task(4, "Marketing", ["Tuesday"])
     ]);
 
     setTimes([
