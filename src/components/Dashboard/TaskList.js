@@ -1,7 +1,7 @@
 import React from "react";
-import Task from "./Task";
+import Tasks from "./Tasks";
 
-const TimeList = props => {
+const TaskList = props => {
   const getCurrentDate = (separator = "") => {
     let newDate = new Date();
     let date = newDate.getDate();
@@ -20,34 +20,6 @@ const TimeList = props => {
     "Saturday",
     "Sunday"
   ];
-
-  let mondays = props.tasks.filter(item => {
-    return item.days.includes("Monday");
-  });
-
-  let tuesdays = props.tasks.filter(item => {
-    return item.days.includes("Tuesday");
-  });
-
-  let wednesdays = props.tasks.filter(item => {
-    return item.days.includes("Wednesday");
-  });
-
-  let thursdays = props.tasks.filter(item => {
-    return item.days.includes("Thursday");
-  });
-
-  let fridays = props.tasks.filter(item => {
-    return item.days.includes("Friday");
-  });
-
-  let saturdays = props.tasks.filter(item => {
-    return item.days.includes("Saturday");
-  });
-
-  let sundays = props.tasks.filter(item => {
-    return item.days.includes("Sunday");
-  });
 
   return (
     <div className="pt-10">
@@ -68,8 +40,10 @@ const TimeList = props => {
           <tr>
             {dates.map((day, index) => {
               return (
-                <td key={index} className="border px-4 py-2">
-                  <Task
+                <td key={index} className="border px-4 py-2 align-top">
+                  <Tasks
+                    editTask={props.editTask}
+                    deleteTask={props.deleteTask}
                     tasks={props.tasks.filter(item => {
                       return item.days.includes(day);
                     })}
@@ -84,4 +58,4 @@ const TimeList = props => {
   );
 };
 
-export default TimeList;
+export default TaskList;

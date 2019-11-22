@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import AddTaskModal from "./AddTaskModal";
+
 import TaskList from "./TaskList";
 import { TaskContext } from "../../controller/TaskContext";
 
@@ -19,6 +20,18 @@ const Dashboard = () => {
         days: days
       }
     ]);
+  };
+
+  const editTask = () => {
+    console.log("Edit Task");
+    // setTasks(prevTask => [
+    //   ...prevTask,
+    //   {
+    //     id: tasks[tasks.length - 1].id + 1,
+    //     title: title,
+    //     days: days
+    //   }
+    // ]);
   };
 
   const deleteTask = id => {

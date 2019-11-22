@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./dashboard.scss";
 
-const AddTaskModal = ({ addTask }) => {
+const EditTaskModal = props => {
   const [showModal, setShowModal] = useState(false);
 
   const showHideClassName = showModal
     ? "modal display-block"
     : "modal display-none";
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState();
   const [monday, setMonday] = useState(true);
   const [tuesday, setTuesday] = useState(true);
   const [wednesday, setWednesday] = useState(true);
@@ -16,6 +16,18 @@ const AddTaskModal = ({ addTask }) => {
   const [friday, setFriday] = useState(true);
   const [saturday, setSaturday] = useState(true);
   const [sunday, setSunday] = useState(true);
+
+  // Constructor
+  useEffect(() => {
+    setTitle(props.task.title);
+    setMonday(props.task.days.includes("Monday") ? true : false);
+    setTuesday(props.task.days.includes("Tuesday") ? true : false);
+    setWednesday(props.task.days.includes("Wednesday") ? true : false);
+    setThursday(props.task.days.includes("Thursday") ? true : false);
+    setFriday(props.task.days.includes("Friday") ? true : false);
+    setSaturday(props.task.days.includes("Saturday") ? true : false);
+    setSunday(props.task.days.includes("Sunday") ? true : false);
+  }, []);
 
   const handleCheckboxEveryday = () => {
     setMonday(true);
@@ -67,10 +79,15 @@ const AddTaskModal = ({ addTask }) => {
       saturday ? "Saturday" : null,
       sunday ? "Sunday" : null
     ];
-    if (title !== "") {
-      addTask(title, daysArray);
-      setShowModal(false);
-    }
+    // if (title !== "") {
+    //   //addTask(title, daysArray);
+    //   setShowModal(false);
+    // }
+  };
+
+  const deleteTask = id => {
+    setShowModal(false);
+    props.deleteTask(id);
   };
 
   return (
@@ -86,7 +103,7 @@ const AddTaskModal = ({ addTask }) => {
           </button>
 
           <form onSubmit={onSubmit}>
-            <h2 className="text-xl font-bold mb-2">Add Task</h2>
+            <h2 className="text-xl font-bold mb-2">Edit Task</h2>
             <div className="mt-5 mb-5">
               <input
                 type="text"
@@ -94,7 +111,6 @@ const AddTaskModal = ({ addTask }) => {
                 onChange={e => setTitle(e.currentTarget.value)}
                 className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                 id="inline-full-name"
-                placeholder="Title"
               />
             </div>
 
@@ -184,7 +200,14 @@ const AddTaskModal = ({ addTask }) => {
                     className="mr-5 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                     type="submit"
                   >
-                    Add Task
+                    Edit Task
+                  </button>
+                  <button
+                    type="button"
+                    className="mr-5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => deleteTask(props.task.id)}
+                  >
+                    Delete Task
                   </button>
                   <button
                     type="button"
@@ -201,16 +224,16 @@ const AddTaskModal = ({ addTask }) => {
       </div>
 
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className=""
         type="button"
         onClick={() => {
           setShowModal(true);
         }}
       >
-        Add Task
+        <i className="material-icons text-blue-500">edit</i>
       </button>
     </>
   );
 };
 
-export default AddTaskModal;
+export default EditTaskModal;
