@@ -22,16 +22,19 @@ const Dashboard = () => {
     ]);
   };
 
-  const editTask = () => {
-    console.log("Edit Task");
-    // setTasks(prevTask => [
-    //   ...prevTask,
-    //   {
-    //     id: tasks[tasks.length - 1].id + 1,
-    //     title: title,
-    //     days: days
-    //   }
-    // ]);
+  const editTask = task => {
+    console.log(task);
+    let editTasks = [...tasks];
+
+    for (let i = 0; i < editTasks.length; i++) {
+      let editTask = editTasks[i];
+      if (task.id === editTask.id) {
+        editTask.title = task.title;
+        editTask.days = task.days;
+      }
+    }
+
+    setTasks(editTasks);
   };
 
   const deleteTask = id => {
@@ -49,7 +52,7 @@ const Dashboard = () => {
         <div className="bg-white shadow-md rounded p-10">
           <AddTaskModal addTask={addTask} />
 
-          <TaskList tasks={tasks} deleteTask={deleteTask} />
+          <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} />
         </div>
       </div>
     </div>

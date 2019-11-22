@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./dashboard.scss";
+import Task from "../../models/Task";
 
 const EditTaskModal = props => {
   const [showModal, setShowModal] = useState(false);
@@ -79,10 +80,12 @@ const EditTaskModal = props => {
       saturday ? "Saturday" : null,
       sunday ? "Sunday" : null
     ];
-    // if (title !== "") {
-    //   //addTask(title, daysArray);
-    //   setShowModal(false);
-    // }
+    if (title !== "") {
+      // props.editTask(props.task.id, title);
+
+      props.editTask(new Task(props.task.id, title, daysArray));
+      setShowModal(false);
+    }
   };
 
   const deleteTask = id => {
@@ -103,7 +106,7 @@ const EditTaskModal = props => {
           </button>
 
           <form onSubmit={onSubmit}>
-            <h2 className="text-xl font-bold mb-2">Edit Task</h2>
+            <h2 className="text-xl font-bold">Edit Task</h2>
             <div className="mt-5 mb-5">
               <input
                 type="text"
@@ -197,24 +200,26 @@ const EditTaskModal = props => {
 
                 <div className="mt-5">
                   <button
-                    className="mr-5 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    className="mr-5 shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                     type="submit"
                   >
-                    Edit Task
+                    Save
                   </button>
+
                   <button
                     type="button"
-                    className="mr-5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => deleteTask(props.task.id)}
-                  >
-                    Delete Task
-                  </button>
-                  <button
-                    type="button"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="mr-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => setShowModal(false)}
                   >
                     Close
+                  </button>
+
+                  <button
+                    type="button"
+                    className="bg-transparent text-red-800 font-bold py-2 px-4 rounded"
+                    onClick={() => deleteTask(props.task.id)}
+                  >
+                    Delete
                   </button>
                 </div>
               </div>

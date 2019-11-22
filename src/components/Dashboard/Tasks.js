@@ -8,7 +8,11 @@ const Tasks = props => {
         {props.tasks.map((task, index) => (
           <li className="flex items-center justify-between">
             {task.title}{" "}
-            <EditTaskModal task={task} deleteTask={props.deleteTask} />
+            <EditTaskModal
+              task={task}
+              editTask={props.editTask}
+              deleteTask={props.deleteTask}
+            />
           </li>
         ))}
       </ul>
