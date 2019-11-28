@@ -21,15 +21,22 @@ const TaskList = props => {
     "Sunday"
   ];
 
+  var d = new Date();
+  var n = dates[d.getDay() - 1];
+
   return (
     <div className="pt-10">
-      <h2 className="text-xl font-bold mb-2 ">Daily Tasks List</h2>
       <table className="table-auto w-full">
         <thead>
           <tr>
             {dates.map((day, index) => {
               return (
-                <th key={index} className="px-4 py-2 text-left">
+                <th
+                  key={index}
+                  className={
+                    day === n ? "px-4 py-2 text-left bg-teal-100" : "px-4 py-2"
+                  }
+                >
                   {day}
                 </th>
               );
@@ -40,7 +47,14 @@ const TaskList = props => {
           <tr>
             {dates.map((day, index) => {
               return (
-                <td key={index} className="border px-4 py-2 align-top">
+                <td
+                  key={index}
+                  className={
+                    day === n
+                      ? "border px-4 py-2 align-top bg-teal-100"
+                      : "border px-4 py-2 align-top"
+                  }
+                >
                   <Tasks
                     editTask={props.editTask}
                     deleteTask={props.deleteTask}
