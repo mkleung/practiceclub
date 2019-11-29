@@ -19,9 +19,9 @@ export const TaskProvider = props => {
     ]);
 
     setTimes([
-      { id: 1, task_id: 1, time: 0, date: "" },
-      { id: 2, task_id: 2, time: 0, date: "" },
-      { id: 3, task_id: 1, time: 0, date: "" }
+      new Time(1, 1, 3, ""),
+      new Time(2, 1, 5, ""),
+      new Time(3, 2, 100, "")
     ]);
   }, []);
 

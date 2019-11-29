@@ -11,17 +11,10 @@ const divStyle = {
 const Calendar = () => {
   const { times } = useContext(TaskContext);
 
-  const [completedTimes, setCompletedTimes] = useState([]);
-
+  console.log(times);
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
-
-  // INITIALIZE
-  useEffect(() => {
-    let currentDate = new Date().toLocaleString();
-    console.log(currentDate.split(",")[0]);
-  }, []);
 
   return (
     <div className="py-20" style={divStyle}>
@@ -32,6 +25,12 @@ const Calendar = () => {
 
         <div className="flex justify-center bg-white shadow-md rounded p-10">
           <div className="calendar">
+            <ul>
+              {times.map(item => (
+                <li>{item.time}</li>
+              ))}
+            </ul>
+
             <div className="title">
               <span className="month">{month}</span>{" "}
               <span className="year">{year}</span>

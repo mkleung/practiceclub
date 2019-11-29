@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import PracticeList from "./PracticeList";
 import { TaskContext } from "../../controller/TaskContext";
+import Time from "../../models/Time";
 
 const divStyle = {
   background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
@@ -8,6 +9,7 @@ const divStyle = {
 
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
+  const { times, setTimes } = useContext(TaskContext);
 
   let today = new Date().getDay();
   var weekday = new Array(7);
@@ -19,12 +21,11 @@ const Dashboard = () => {
   weekday[5] = "Friday";
   weekday[6] = "Saturday";
 
-  const saveTime = (index, time) => {
-    console.log(index, time);
-    // let saveArray = [...times];
-    // saveArray[index].time = time;
-    // saveArray[index].date = new Date().toLocaleString();
-    // setTasks(saveArray);
+  const addTime = time => {
+    setTimes(prevTask => [
+      ...prevTask,
+      new Time(times[times.length - 1].id + 1, 1, time, new Date())
+    ]);
   };
 
   var currentDate = new Date();
@@ -54,7 +55,7 @@ const Dashboard = () => {
             <PracticeList
               title={weekday[today]}
               tasks={tasks}
-              saveTime={saveTime}
+              addTime={addTime}
             />
           </div>
         </div>

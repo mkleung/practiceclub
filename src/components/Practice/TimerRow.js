@@ -45,7 +45,7 @@ const TimerRow = props => {
           </button>
           <button
             className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
-            onClick={() => props.saveTime(props.taskId, seconds)}
+            onClick={() => props.addTime(props.taskId, seconds)}
           >
             SAVE
           </button>

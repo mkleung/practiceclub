@@ -23,9 +23,7 @@ const Dashboard = () => {
   };
 
   const editTask = task => {
-    console.log(task);
     let editTasks = [...tasks];
-
     for (let i = 0; i < editTasks.length; i++) {
       let editTask = editTasks[i];
       if (task.id === editTask.id) {
@@ -33,7 +31,6 @@ const Dashboard = () => {
         editTask.days = task.days;
       }
     }
-
     setTasks(editTasks);
   };
 
@@ -51,7 +48,6 @@ const Dashboard = () => {
 
         <div className="bg-white shadow-md rounded p-10">
           <AddTaskModal addTask={addTask} />
-
           <TaskList tasks={tasks} editTask={editTask} deleteTask={deleteTask} />
         </div>
       </div>
