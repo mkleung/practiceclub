@@ -21,7 +21,7 @@ const Dashboard = () => {
   weekday[5] = "Friday";
   weekday[6] = "Saturday";
 
-  const addTime = time => {
+  const saveTime = time => {
     setTimes(prevTask => [
       ...prevTask,
       new Time(times[times.length - 1].id + 1, 1, time, new Date())
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <PracticeList
               title={weekday[today]}
               tasks={tasks}
-              addTime={addTime}
+              saveTime={saveTime}
             />
           </div>
         </div>

@@ -25,6 +25,12 @@ const TimerRow = props => {
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
+  // Seconds
+  const saveTime = () => {
+    // console.log(seconds);
+    props.saveTime(seconds);
+  };
+
   var date = new Date(null);
   date.setSeconds(seconds);
   var time = date.toISOString().substr(11, 8);
@@ -43,9 +49,15 @@ const TimerRow = props => {
           >
             {isActive ? "STOP" : "START"}
           </button>
+          {/* <button
+            className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
+            onClick={() => props.saveTime(props.taskId, seconds)}
+          >
+            SAVE
+          </button> */}
           <button
             className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
-            onClick={() => props.addTime(props.taskId, seconds)}
+            onClick={saveTime}
           >
             SAVE
           </button>

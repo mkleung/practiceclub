@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Calendar from "./components/Calendar";
+import Times from "./components/Times";
 
 // https://scotch.io/tutorials/build-a-beautiful-landing-page-with-tailwind-css
 
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/practice" component={Practice} />
+            <Route exact path="/times" component={Times} />
           </TaskProvider>
 
           <Route exact path="/" component={Home} />
