@@ -2,10 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PracticeList from "./PracticeList";
 import { TaskContext } from "../../controller/TaskContext";
 import Time from "../../models/Time";
-
-const divStyle = {
-  background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
-};
+import divStyle from "../../styles";
 
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
@@ -25,7 +22,12 @@ const Dashboard = () => {
     var today = new Date();
     setTimes(prevTask => [
       ...prevTask,
-      new Time(times[times.length - 1].id + 1, 1, time, today.toISOString().substring(0, 10))
+      new Time(
+        times[times.length - 1].id + 1,
+        1,
+        time,
+        today.toISOString().substring(0, 10)
+      )
     ]);
   };
 

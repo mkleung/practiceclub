@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import AddTaskModal from "./AddTaskModal";
-
+import divStyle from "../../styles";
 import TaskList from "./TaskList";
 import { TaskContext } from "../../controller/TaskContext";
-
-const divStyle = {
-  background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
-};
 
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
