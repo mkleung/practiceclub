@@ -21,17 +21,14 @@ const Calendar = () => {
         <div className="flex justify-center">
           <h2 className="text-4xl font-bold mb-5 text-white">Calendar</h2>
         </div>
-
         <div className="flex justify-center bg-white shadow-md rounded p-10">
           <div className="calendar">
             <div className="title">
               <span className="month">{month}</span>{" "}
               <span className="year">{year}</span>
             </div>
-
             <Labels />
-
-            <Dates />
+            <Dates times={times} />
           </div>
         </div>
       </div>

@@ -27,8 +27,8 @@ const TimerRow = props => {
 
   // Seconds
   const saveTime = () => {
-    // console.log(seconds);
     props.saveTime(seconds);
+    setSeconds(0)
   };
 
   var date = new Date(null);
@@ -41,7 +41,6 @@ const TimerRow = props => {
   return (
     <div className="flex flex-row items-center justify-between">
       <div className="w-3/4 text-left">
-        <h2 className="mb-5 text-3xl">{props.title}</h2>
         <div className="flex flex-row items-center">
           <button
             className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500 mr-5"
@@ -49,18 +48,13 @@ const TimerRow = props => {
           >
             {isActive ? "STOP" : "START"}
           </button>
-          {/* <button
-            className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
-            onClick={() => props.saveTime(props.taskId, seconds)}
-          >
-            SAVE
-          </button> */}
           <button
             className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
             onClick={saveTime}
           >
             SAVE
           </button>
+          <h2 className="ml-10 text-3xl">{props.title}</h2>
         </div>
       </div>
       <div className="w-1/4 text-6xl flex flex-row space-between ">

@@ -54,7 +54,10 @@ class Dates extends React.Component {
               key={i}
               onClick={() => updateDate(myDay)}
             >
-              {myDay.getDate()}
+              {myDay.getDate()}<br />
+              {myDay.getMonth()}<br />
+              {myDay.getFullYear()}
+          
             </button>
           </div>
         );

@@ -22,9 +22,10 @@ const Dashboard = () => {
   weekday[6] = "Saturday";
 
   const saveTime = time => {
+    var today = new Date();
     setTimes(prevTask => [
       ...prevTask,
-      new Time(times[times.length - 1].id + 1, 1, time, new Date())
+      new Time(times[times.length - 1].id + 1, 1, time, today.toISOString().substring(0, 10))
     ]);
   };
 

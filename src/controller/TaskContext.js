@@ -19,9 +19,7 @@ export const TaskProvider = props => {
     ]);
 
     setTimes([
-      new Time(1, 1, 3, ""),
-      new Time(2, 1, 5, ""),
-      new Time(3, 2, 100, "")
+      new Time(1, 1, 3, "2019-12-05")
     ]);
   }, []);
 
