@@ -51,8 +51,7 @@ const Days = props => {
       <div className={checkArray(date) ? "square complete" : "square"}>
         <button
           className={
-            "date btn " +
-            (day.getDate() === new Date().getDate() ? "current" : "")
+            day.getDate() === new Date().getDate() ? "dateBtn current" : ""
           }
           key={i}
         >
