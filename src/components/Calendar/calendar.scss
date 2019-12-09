@@ -46,6 +46,18 @@
     justify-content: center;
     text-align: center;
     height: 100px;
+    .square {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .complete {
+      background: #FF7C1F;
+      color: #FFF;
+      clip-path: circle(15%);
+    }
   }
 
   &:last-child {

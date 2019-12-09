@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import divStyle from "../../styles";
 import Labels from "./Labels";
 import Days from "./Days";
 import "./calendar.scss";
+import { TaskContext } from "../../controller/TaskContext";
 
 const Calendar = () => {
   // Declare a new state variable, which we'll call "count"
@@ -11,6 +12,8 @@ const Calendar = () => {
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
+
+  const { times } = useContext(TaskContext);
 
   return (
     <div className="py-20" style={divStyle}>
@@ -26,7 +29,7 @@ const Calendar = () => {
               <span className="year">{year}</span>
             </div>
             <Labels />
-            <Days />
+            <Days times={times} />
           </div>
         </div>
       </div>
