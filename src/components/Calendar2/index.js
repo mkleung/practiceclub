@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import divStyle from "../../styles";
 import Labels from "./Labels";
+import Days from "./Days";
 import "./calendar.scss";
 
 const Calendar = () => {
@@ -25,6 +26,7 @@ const Calendar = () => {
               <span className="year">{year}</span>
             </div>
             <Labels />
+            <Days />
           </div>
         </div>
       </div>

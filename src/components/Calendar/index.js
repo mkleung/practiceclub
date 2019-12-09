@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
+import divStyle from "../../styles";
+import Labels from "./Labels";
+import Days from "./Days";
 import "./calendar.scss";
-import Labels from "./labels";
-import Dates from "./dates";
-import { TaskContext } from "../../controller/TaskContext";
-
-const divStyle = {
-  background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
-};
 
 const Calendar = () => {
-  const { times } = useContext(TaskContext);
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
 
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
@@ -18,9 +15,10 @@ const Calendar = () => {
   return (
     <div className="py-20" style={divStyle}>
       <div className="container mx-auto px-6">
-        <div className="flex justify-center">
-          <h2 className="text-4xl font-bold mb-5 text-white">Calendar</h2>
+        <div className="flex justify-center mb-10">
+          <h2 className="text-4xl font-bold text-white">Calendar</h2>
         </div>
+
         <div className="flex justify-center bg-white shadow-md rounded p-10">
           <div className="calendar">
             <div className="title">
@@ -28,7 +26,7 @@ const Calendar = () => {
               <span className="year">{year}</span>
             </div>
             <Labels />
-            <Dates times={times} />
+            <Days />
           </div>
         </div>
       </div>

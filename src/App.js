@@ -12,7 +12,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Calendar from "./components/Calendar2";
+import Calendar from "./components/Calendar";
 import Times from "./components/Times";
 
 // https://scotch.io/tutorials/build-a-beautiful-landing-page-with-tailwind-css
