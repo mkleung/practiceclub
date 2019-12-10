@@ -28,7 +28,7 @@ const TimerRow = props => {
   // Seconds
   const saveTime = () => {
     props.saveTime(seconds);
-    setSeconds(0)
+    setSeconds(0);
   };
 
   var date = new Date(null);
@@ -46,14 +46,23 @@ const TimerRow = props => {
             className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500 mr-5"
             onClick={toggle}
           >
-            {isActive ? "STOP" : "START"}
+            {isActive ? (
+              <i className="material-icons">stop</i>
+            ) : (
+              <i className="material-icons">play_arrow</i>
+            )}
           </button>
-          <button
-            className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
-            onClick={saveTime}
-          >
-            SAVE
-          </button>
+
+          <div className="tooltip">
+            <button
+              className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
+              onClick={saveTime}
+            >
+              <i className="material-icons">done</i>
+            </button>
+            <span className="tooltiptext">Save</span>
+          </div>
+
           <h2 className="ml-10 text-3xl">{props.title}</h2>
         </div>
       </div>

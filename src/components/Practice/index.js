@@ -3,6 +3,7 @@ import PracticeList from "./PracticeList";
 import { TaskContext } from "../../controller/TaskContext";
 import Time from "../../models/Time";
 import divStyle from "../../styles";
+import "./practice.scss";
 
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
