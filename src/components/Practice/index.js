@@ -4,6 +4,7 @@ import { TaskContext } from "../../controller/TaskContext";
 import Time from "../../models/Time";
 import divStyle from "../../styles";
 import "./practice.scss";
+import Calendar from "../Calendar";
 
 const Dashboard = () => {
   const { tasks, setTasks } = useContext(TaskContext);
@@ -21,13 +22,14 @@ const Dashboard = () => {
 
   const saveTime = time => {
     var today = new Date();
+
     setTimes(prevTask => [
       ...prevTask,
       new Time(
         times[times.length - 1].id + 1,
         1,
         time,
-        today.toISOString().substring(0, 10)
+        `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
       )
     ]);
   };
@@ -63,6 +65,8 @@ const Dashboard = () => {
             />
           </div>
         </div>
+
+        <Calendar />
       </div>
     </div>
   );

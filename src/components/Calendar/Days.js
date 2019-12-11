@@ -48,17 +48,16 @@ const Days = props => {
       ("0" + day.getDate()).slice(-2);
 
     monthArray[count].push(
-      <div className={checkArray(date) ? "square complete" : "square"}>
-        <button
-          className={
-            day.getDate() === new Date().getDate()
-              ? "bg-blue-200 text-black h-full w-full"
-              : ""
-          }
-          key={i}
-        >
-          {day.getDate()}
-        </button>
+      <div
+        className={
+          day.getDate() === new Date().getDate()
+            ? "daysCell bg-blue-200 text-black h-full w-full"
+            : "daysCell"
+        }
+      >
+        <div className={checkArray(date) ? "square complete" : "square"}>
+          <button key={i}>{day.getDate()}</button>
+        </div>
       </div>
     );
 
@@ -74,9 +73,7 @@ const Days = props => {
         return (
           <div className="daysRow" key={i}>
             {week.map((day, index) => (
-              <div className="daysCell" key={index}>
-                {day}
-              </div>
+              <>{day}</>
             ))}
           </div>
         );
