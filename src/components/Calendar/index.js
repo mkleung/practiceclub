@@ -25,8 +25,8 @@ const Calendar = () => {
         <div className="flex justify-center bg-white shadow-md rounded p-10">
           <div className="calendar">
             <div className="title">
-              <span className="month">{month}</span>{" "}
-              <span className="year">{year}</span>
+              <span className="text-blue-500 capitalize">{month}</span>{" "}
+              <span className="text-gray-600 capitalize">{year}</span>
             </div>
             <Labels />
             <Days times={times} />

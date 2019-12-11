@@ -4,13 +4,6 @@
   .title {
     text-align: right;
     font-size: 2em;
-    .year {
-      color: grey;
-    }
-    .month {
-      color: red;
-      text-transform: uppercase;
-    }
   }
 }
 
@@ -27,7 +20,6 @@
     align-items:center;
     justify-content:center;
     text-align:center;
-    background: #FF7C1F;
     color: #fff;
     height: 50px;
   }
@@ -45,7 +37,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100px;
+    height: 150px;
     .square {
       height: 100%;
       width: 100%;
@@ -57,13 +49,6 @@
       background: #FF7C1F;
       color: #FFF;
       clip-path: circle(15%);
-    }
-    .dateBtn {
-      height: 50px;
-      width: 50px;
-      // background:red;
-      border-radius: 50%;
-      border: 10px solid red;
     }
   }
 
