@@ -8,7 +8,7 @@ const Header = props => {
 
   return (
     <div>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+      <nav className="flex items-center justify-between flex-wrap bg-green-500 p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Link className="font-semibold text-xl tracking-tight" to="/">
             Practice Club
@@ -19,28 +19,28 @@ const Header = props => {
           <div className="text-sm lg:flex-grow" />
 
           <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
             to="/practice"
           >
             Practice
           </Link>
 
           <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
             to="/dashboard"
           >
             Dashboard
           </Link>
 
           <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
             to="/calendar"
           >
             Calendar
           </Link>
 
           <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
             to="/times"
           >
             Times
@@ -49,7 +49,7 @@ const Header = props => {
           <div>
             {currentUser && (
               <Link
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
                 to="/dashboard"
               >
                 Dashboard
@@ -57,7 +57,7 @@ const Header = props => {
             )}
             {currentUser && (
               <button
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
                 onClick={() => firebase.auth().signOut()}
               >
                 Signout

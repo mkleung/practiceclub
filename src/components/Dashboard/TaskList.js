@@ -34,7 +34,7 @@ const TaskList = props => {
                 <th
                   key={index}
                   className={
-                    day === n ? "px-4 py-2 text-left bg-teal-100" : "px-4 py-2"
+                    day === n ? "px-4 py-2 text-left bg-blue-100" : "px-4 py-2"
                   }
                 >
                   {day}
@@ -51,7 +51,7 @@ const TaskList = props => {
                   key={index}
                   className={
                     day === n
-                      ? "border px-4 py-2 align-top bg-teal-100"
+                      ? "border px-4 py-2 align-top bg-blue-100"
                       : "border px-4 py-2 align-top"
                   }
                 >

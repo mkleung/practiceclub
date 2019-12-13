@@ -58,7 +58,7 @@ const Days = props => {
         <div
           className={
             checkArray(date)
-              ? "w-full h-full items-center flex justify-center complete text-white bg-teal-500"
+              ? "w-full h-full items-center flex justify-center complete text-white bg-green-500"
               : "w-full h-full items-center flex justify-center"
           }
         >

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./dashboard.scss";
+// import "./dashboard.scss";
 
 const AddTaskModal = ({ addTask }) => {
   const [showModal, setShowModal] = useState(false);
@@ -181,7 +181,7 @@ const AddTaskModal = ({ addTask }) => {
 
                 <div className="mt-5">
                   <button
-                    className="mr-5 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                    className="mr-5 shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                     type="submit"
                   >
                     Add Task
@@ -201,7 +201,7 @@ const AddTaskModal = ({ addTask }) => {
       </div>
 
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded"
         type="button"
         onClick={() => {
           setShowModal(true);

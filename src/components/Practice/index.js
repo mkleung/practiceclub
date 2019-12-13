@@ -2,12 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import PracticeList from "./PracticeList";
 import { TaskContext } from "../../controller/TaskContext";
 import Time from "../../models/Time";
-import divStyle from "../../styles";
-import "./practice.scss";
+import "../../styles/practice.scss";
 import Calendar from "../Calendar";
 
+const divStyle = {
+  background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
+};
+
 const Dashboard = () => {
-  const { tasks, setTasks } = useContext(TaskContext);
+  const { tasks } = useContext(TaskContext);
   const { times, setTimes } = useContext(TaskContext);
 
   let today = new Date().getDay();

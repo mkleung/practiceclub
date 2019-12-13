@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./dashboard.scss";
+// import "./dashboard.scss";
 import Task from "../../models/Task";
 
 const EditTaskModal = props => {

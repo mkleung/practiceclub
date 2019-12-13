@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
-import divStyle from "../../styles";
 import Labels from "./Labels";
 import Days from "./Days";
-import "./calendar.scss";
+import "../../styles/calendar.scss";
 import { TaskContext } from "../../controller/TaskContext";
+
+const divStyle = {
+  background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
+};
 
 const Calendar = () => {
   // Declare a new state variable, which we'll call "count"
@@ -25,7 +28,7 @@ const Calendar = () => {
         <div className="flex justify-center bg-white shadow-md rounded p-10">
           <div className="calendar">
             <div className="title">
-              <span className="text-blue-500 capitalize">{month}</span>{" "}
+              <span className="text-blue-500 uppercase">{month}</span>{" "}
               <span className="text-gray-600 capitalize">{year}</span>
             </div>
             <Labels />
