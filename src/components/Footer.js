@@ -35,27 +35,6 @@ const App = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full md:w-1/4 text-center md:text-left">
-            <h5 className="uppercase mb-6 font-bold">Legal</h5>
-            <ul className="mb-4">
-              <li className="mt-2">
-                <Link
-                  className="hover:underline text-gray-600 hover:text-orange-500"
-                  to=""
-                >
-                  Terms
-                </Link>
-              </li>
-              <li className="mt-2">
-                <Link
-                  className="hover:underline text-gray-600 hover:text-orange-500"
-                  to=""
-                >
-                  Privacy
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </footer>

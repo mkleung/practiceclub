@@ -47,9 +47,9 @@ const TimerRow = props => {
             onClick={toggle}
           >
             {isActive ? (
-              <i className="material-icons">stop</i>
+              <i className="material-icons text-black-500">stop</i>
             ) : (
-              <i className="material-icons">play_arrow</i>
+              <i className="material-icons text-black-500">play_arrow</i>
             )}
           </button>
 
@@ -58,7 +58,7 @@ const TimerRow = props => {
               className="rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
               onClick={saveTime}
             >
-              <i className="material-icons">done</i>
+              <i className="material-icons text-black-500">done</i>
             </button>
             <span className="tooltiptext">Save</span>
           </div>

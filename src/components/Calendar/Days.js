@@ -55,7 +55,13 @@ const Days = props => {
             : "daysCell"
         }
       >
-        <div className={checkArray(date) ? "square complete" : "square"}>
+        <div
+          className={
+            checkArray(date)
+              ? "w-full h-full items-center flex justify-center complete text-white bg-teal-500"
+              : "w-full h-full items-center flex justify-center"
+          }
+        >
           <button key={i}>{day.getDate()}</button>
         </div>
       </div>
