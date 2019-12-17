@@ -17,11 +17,13 @@ export const TaskProvider = props => {
       new Task(2, "Programming", ["Monday", "Tuesday", "Thursday"]),
       new Task(3, "Marketing", ["Thursday", "Friday"])
     ]);
-
-    setTimes([
-      new Time(1, 1, 3, "2019-12-05")
-    ]);
+    setTimes([new Time(1, 1, 3, "2019-12-05")]);
   }, []);
+
+  // ADD TASK
+  useEffect(() => {
+    console.log("Add task");
+  }, [tasks]);
 
   return (
     <TaskContext.Provider value={{ times, setTimes, tasks, setTasks }}>

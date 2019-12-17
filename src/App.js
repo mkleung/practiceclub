@@ -7,8 +7,8 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import Practice from "./components/Practice";
 import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -23,16 +23,17 @@ function App() {
       <Router>
         <div>
           <Header />
-          {/* <Route exact path="/" component={Home} /> */}
           <TaskProvider>
-            <Route exact path="/calendar" component={Calendar} />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/practice" component={Practice} />
+            <PrivateRoute exact path="/times" component={Times} />
+
+            {/* <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/practice" component={Practice} />
-            <Route exact path="/times" component={Times} />
+            <Route exact path="/times" component={Times} /> */}
           </TaskProvider>
 
           <Route exact path="/" component={Home} />
-          {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Footer />

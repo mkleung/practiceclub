@@ -18,35 +18,28 @@ const Header = props => {
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow" />
 
-          <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
-            to="/practice"
-          >
-            Practice
-          </Link>
-
-          <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
-            to="/dashboard"
-          >
-            Dashboard
-          </Link>
-
-          <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
-            to="/calendar"
-          >
-            Calendar
-          </Link>
-
-          <Link
-            className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
-            to="/times"
-          >
-            Times
-          </Link>
-
           <div>
+            {/* Practice */}
+            {currentUser && (
+              <Link
+                className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
+                to="/practice"
+              >
+                Practice
+              </Link>
+            )}
+
+            {/* Times */}
+            {currentUser && (
+              <Link
+                className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
+                to="/times"
+              >
+                Times
+              </Link>
+            )}
+
+            {/* Dashboard */}
             {currentUser && (
               <Link
                 className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
@@ -55,6 +48,8 @@ const Header = props => {
                 Dashboard
               </Link>
             )}
+
+            {/* Signout */}
             {currentUser && (
               <button
                 className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
@@ -64,6 +59,7 @@ const Header = props => {
               </button>
             )}
 
+            {/* Login */}
             {!currentUser && (
               <Link
                 className="mr-4 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
@@ -73,6 +69,7 @@ const Header = props => {
               </Link>
             )}
 
+            {/* Register */}
             {!currentUser && (
               <Link
                 className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
