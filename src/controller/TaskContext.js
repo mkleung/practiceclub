@@ -21,12 +21,48 @@ export const TaskProvider = props => {
   }, []);
 
   // ADD TASK
-  useEffect(() => {
-    console.log("Add task");
-  }, [tasks]);
+  const addTask = (title, days) => {
+    setTasks(prevTask => [
+      ...prevTask,
+      {
+        id: tasks[tasks.length - 1].id + 1,
+        title: title,
+        days: days
+      }
+    ]);
+  };
+
+  // EDIT TASK
+  const editTask = task => {
+    let editTasks = [...tasks];
+    for (let i = 0; i < editTasks.length; i++) {
+      let editTask = editTasks[i];
+      if (task.id === editTask.id) {
+        editTask.title = task.title;
+        editTask.days = task.days;
+      }
+    }
+    setTasks(editTasks);
+  };
+
+  // DELETE TASK
+  const deleteTask = id => {
+    let deleteTasks = tasks.filter(task => task.id !== id);
+    setTasks(deleteTasks);
+  };
 
   return (
-    <TaskContext.Provider value={{ times, setTimes, tasks, setTasks }}>
+    <TaskContext.Provider
+      value={{
+        times,
+        setTimes,
+        tasks,
+        setTasks,
+        addTask,
+        deleteTask,
+        editTask
+      }}
+    >
       {props.children}
     </TaskContext.Provider>
   );

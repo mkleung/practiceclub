@@ -6,7 +6,7 @@ import { TaskProvider } from "./controller/TaskContext";
 import PrivateRoute from "./components/PrivateRoute";
 
 import Practice from "./components/Practice";
-import Dashboard from "./components/Dashboard";
+import Tasks from "./components/Tasks";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Home from "./components/Home";
@@ -24,7 +24,7 @@ function App() {
         <div>
           <Header />
           <TaskProvider>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/tasks" component={Tasks} />
             <PrivateRoute exact path="/practice" component={Practice} />
             <PrivateRoute exact path="/times" component={Times} />
 

@@ -39,13 +39,13 @@ const Header = props => {
               </Link>
             )}
 
-            {/* Dashboard */}
+            {/* Tasks */}
             {currentUser && (
               <Link
                 className="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4"
-                to="/dashboard"
+                to="/tasks"
               >
-                Dashboard
+                Tasks
               </Link>
             )}
 

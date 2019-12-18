@@ -9,35 +9,7 @@ const divStyle = {
 };
 
 const Dashboard = () => {
-  const { tasks, setTasks } = useContext(TaskContext);
-
-  const addTask = (title, days) => {
-    setTasks(prevTask => [
-      ...prevTask,
-      {
-        id: tasks[tasks.length - 1].id + 1,
-        title: title,
-        days: days
-      }
-    ]);
-  };
-
-  const editTask = task => {
-    let editTasks = [...tasks];
-    for (let i = 0; i < editTasks.length; i++) {
-      let editTask = editTasks[i];
-      if (task.id === editTask.id) {
-        editTask.title = task.title;
-        editTask.days = task.days;
-      }
-    }
-    setTasks(editTasks);
-  };
-
-  const deleteTask = id => {
-    let deleteTasks = tasks.filter(task => task.id !== id);
-    setTasks(deleteTasks);
-  };
+  const { tasks, addTask, editTask, deleteTask } = useContext(TaskContext);
 
   return (
     <div className="py-20" style={divStyle}>

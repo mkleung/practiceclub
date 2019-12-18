@@ -1,5 +1,5 @@
 import React from "react";
-import Tasks from "./Tasks";
+import Task from "./Task";
 
 const TaskList = props => {
   const getCurrentDate = (separator = "") => {
@@ -55,7 +55,7 @@ const TaskList = props => {
                       : "border px-4 py-2 align-top"
                   }
                 >
-                  <Tasks
+                  <Task
                     editTask={props.editTask}
                     deleteTask={props.deleteTask}
                     tasks={props.tasks.filter(item => {

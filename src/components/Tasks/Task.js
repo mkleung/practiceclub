@@ -1,7 +1,7 @@
 import React from "react";
 import EditTaskModal from "./EditTaskModal";
 
-const Tasks = props => {
+const Task = props => {
   return (
     <>
       <ul>
@@ -20,4 +20,4 @@ const Tasks = props => {
   );
 };
 
-export default Tasks;
+export default Task;
