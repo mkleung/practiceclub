@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import firebase from "../database/firebase";
+
 import Task from "../models/Task";
 import Time from "../models/Time";
 
@@ -12,24 +14,45 @@ export const TaskProvider = props => {
 
   // INITIALIZE TIMES
   useEffect(() => {
-    setTasks([
-      new Task(1, "Design", ["Monday", "Wednesday"]),
-      new Task(2, "Programming", ["Monday", "Tuesday", "Thursday"]),
-      new Task(3, "Marketing", ["Thursday", "Friday"])
-    ]);
-    setTimes([new Time(1, 1, 3, "2019-12-05")]);
+    // setTasks([
+    //   new Task(1, "Design", ["Monday", "Wednesday"]),
+    //   new Task(2, "Programming", ["Monday", "Tuesday", "Thursday"]),
+    //   new Task(3, "Marketing", ["Thursday", "Friday"])
+    // ]);
+    // setTimes([new Time(1, 1, 3, "2019-12-05")]);
+
+    const unsubscribe = firebase
+      .firestore()
+      .collection("tasks")
+      .onSnapshot(snapshot => {
+        const newTasks = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setTasks(newTasks);
+      });
+    // Very important - Close connection to FB
+    return () => unsubscribe();
   }, []);
 
   // ADD TASK
   const addTask = (title, days) => {
-    setTasks(prevTask => [
-      ...prevTask,
-      {
-        id: tasks[tasks.length - 1].id + 1,
+    // setTasks(prevTask => [
+    //   ...prevTask,
+    //   {
+    //     id: tasks[tasks.length - 1].id + 1,
+    //     title: title,
+    //     days: days
+    //   }
+    // ]);
+
+    firebase
+      .firestore()
+      .collection("tasks")
+      .add({
         title: title,
         days: days
-      }
-    ]);
+      });
   };
 
   // EDIT TASK
