@@ -43,6 +43,7 @@ const TaskList = props => {
             })}
           </tr>
         </thead>
+
         <tbody>
           <tr>
             {dates.map((day, index) => {

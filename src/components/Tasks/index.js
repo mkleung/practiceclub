@@ -15,7 +15,9 @@ const Dashboard = () => {
     <div className="py-20" style={divStyle}>
       <div className="container mx-auto px-6 ">
         <div className="flex justify-center">
-          <h2 className="text-4xl font-bold mb-5 text-white">Dashboard</h2>
+          <h2 className="text-4xl font-bold mb-5 text-white">
+            Tasks Dashboard
+          </h2>
         </div>
 
         <div className="bg-white shadow-md rounded p-10">
