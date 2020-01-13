@@ -15,12 +15,12 @@ const TimeList = props => {
   return (
     <div className="bg-white shadow-md rounded p-10 text-center">
       {tasks.map((task, index) => (
-          <TimerRow
-           key={index}
-            taskId={task.id}
-            title={task.title}
-            saveTime={props.saveTime}
-          />
+        <TimerRow
+          key={index}
+          taskId={task.id}
+          title={task.title}
+          addTime={props.addTime}
+        />
       ))}
     </div>
   );

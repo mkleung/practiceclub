@@ -3,6 +3,7 @@ import "./styles.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./controller/AuthContext";
 import { TaskProvider } from "./controller/TaskContext";
+import { TimesProvider } from "./controller/TimesContext";
 import PrivateRoute from "./components/PrivateRoute";
 
 import Practice from "./components/Practice";
@@ -23,15 +24,13 @@ function App() {
       <Router>
         <div>
           <Header />
-          <TaskProvider>
-            <PrivateRoute exact path="/tasks" component={Tasks} />
-            <PrivateRoute exact path="/practice" component={Practice} />
-            <PrivateRoute exact path="/times" component={Times} />
-
-            {/* <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/practice" component={Practice} />
-            <Route exact path="/times" component={Times} /> */}
-          </TaskProvider>
+          <TimesProvider>
+            <TaskProvider>
+              <PrivateRoute exact path="/tasks" component={Tasks} />
+              <PrivateRoute exact path="/practice" component={Practice} />
+              <PrivateRoute exact path="/times" component={Times} />
+            </TaskProvider>
+          </TimesProvider>
 
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />

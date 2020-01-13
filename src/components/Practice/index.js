@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import PracticeList from "./PracticeList";
 import { TaskContext } from "../../controller/TaskContext";
+import { TimesContext } from "../../controller/TimesContext";
 import Time from "../../models/Time";
 import "../../styles/practice.scss";
 import Calendar from "../Calendar";
@@ -11,7 +12,7 @@ const divStyle = {
 
 const Dashboard = () => {
   const { tasks } = useContext(TaskContext);
-  const { times, setTimes } = useContext(TaskContext);
+  const { times, setTimes, addTime } = useContext(TimesContext);
 
   let today = new Date().getDay();
   var weekday = new Array(7);
@@ -23,21 +24,22 @@ const Dashboard = () => {
   weekday[5] = "Friday";
   weekday[6] = "Saturday";
 
-  const saveTime = time => {
-    if (time) {
-      var today = new Date();
-      var id = times.length === 0 ? 0 : times[times.length - 1].id;
-      setTimes(prevTask => [
-        ...prevTask,
-        new Time(
-          id,
-          1,
-          time,
-          `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
-        )
-      ]);
-    }
-  };
+  // const saveTime = time => {
+
+  //   if (time) {
+  //     var today = new Date();
+  //     var id = times.length === 0 ? 0 : times[times.length - 1].id;
+  //     setTimes(prevTask => [
+  //       ...prevTask,
+  //       new Time(
+  //         id,
+  //         1,
+  //         time,
+  //         `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+  //       )
+  //     ]);
+  //   }
+  // };
 
   var currentDate = new Date();
   var displayCurrentDate =
@@ -66,12 +68,12 @@ const Dashboard = () => {
             <PracticeList
               title={weekday[today]}
               tasks={tasks}
-              saveTime={saveTime}
+              addTime={addTime}
             />
           </div>
         </div>
 
-        <Calendar />
+        {/* <Calendar /> */}
       </div>
     </div>
   );

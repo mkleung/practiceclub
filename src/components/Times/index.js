@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { TaskContext } from "../../controller/TaskContext";
+import { TimesContext } from "../../controller/TimesContext";
 
 const divStyle = {
   background: "linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
 };
 
 const Times = () => {
-  const { times, setTimes } = useContext(TaskContext);
+  const { times } = useContext(TimesContext);
 
   return (
     <div className="py-20" style={divStyle}>

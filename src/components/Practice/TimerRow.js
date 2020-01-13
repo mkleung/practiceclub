@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../controller/AuthContext";
 
 const TimerRow = props => {
+  const { currentUser } = useContext(AuthContext);
+
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -22,9 +25,9 @@ const TimerRow = props => {
   }, [isActive, seconds]);
 
   // Seconds
-  const saveTime = () => {
+  const addTime = () => {
     if (!checked) {
-      props.saveTime(seconds);
+      props.addTime(currentUser, seconds);
     }
     setSeconds(0);
     setIsActive(false);
@@ -61,7 +64,7 @@ const TimerRow = props => {
                     ? "rounded-full h-16 w-16 flex items-center justify-center bg-teal-500 text-white"
                     : "rounded-full h-16 w-16 flex items-center justify-center bg-gray-400 hover:bg-gray-500"
                 }
-                onClick={saveTime}
+                onClick={addTime}
               >
                 <i className="material-icons text-black-500">done</i>
               </button>

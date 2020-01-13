@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../database/firebase";
 
-import Task from "../models/Task";
-import Time from "../models/Time";
-
-//import firebase from "../database/firebase";
-
 export const TaskContext = React.createContext();
 
 export const TaskProvider = props => {
-  const [times, setTimes] = useState([]);
   const [tasks, setTasks] = useState([]);
 
-  // INITIALIZE TIMES
+  // INITIALIZE TASKS
   useEffect(() => {
     const unsubscribe = firebase
       .firestore()
@@ -22,7 +16,6 @@ export const TaskProvider = props => {
           id: doc.id,
           ...doc.data()
         }));
-        console.log(newTasks);
         setTasks(newTasks);
       });
     // Very important - Close connection to FB
@@ -42,16 +35,6 @@ export const TaskProvider = props => {
 
   // EDIT TASK
   const editTask = task => {
-    // let editTasks = [...tasks];
-    // for (let i = 0; i < editTasks.length; i++) {
-    //   let editTask = editTasks[i];
-    //   if (task.id === editTask.id) {
-    //     editTask.title = task.title;
-    //     editTask.days = task.days;
-    //   }
-    // }
-    // setTasks(editTasks);
-
     firebase
       .firestore()
       .collection("tasks")
@@ -70,9 +53,6 @@ export const TaskProvider = props => {
 
   // DELETE TASK
   const deleteTask = id => {
-    // let deleteTasks = tasks.filter(task => task.id !== id);
-    // setTasks(deleteTasks);
-
     firebase
       .firestore()
       .collection("tasks")
@@ -89,8 +69,6 @@ export const TaskProvider = props => {
   return (
     <TaskContext.Provider
       value={{
-        times,
-        setTimes,
         tasks,
         setTasks,
         addTask,
