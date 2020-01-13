@@ -24,17 +24,19 @@ const Dashboard = () => {
   weekday[6] = "Saturday";
 
   const saveTime = time => {
-    var today = new Date();
-
-    setTimes(prevTask => [
-      ...prevTask,
-      new Time(
-        times[times.length - 1].id + 1,
-        1,
-        time,
-        `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
-      )
-    ]);
+    if (time) {
+      var today = new Date();
+      var id = times.length === 0 ? 0 : times[times.length - 1].id;
+      setTimes(prevTask => [
+        ...prevTask,
+        new Time(
+          id,
+          1,
+          time,
+          `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+        )
+      ]);
+    }
   };
 
   var currentDate = new Date();

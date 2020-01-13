@@ -15,7 +15,7 @@ const Register = ({ history }) => {
         await firebase
           .auth()
           .createUserWithEmailAndPassword(email.value, password.value);
-        history.push("/dashboard");
+        history.push("/practice");
       } catch (error) {
         alert(error);
       }
