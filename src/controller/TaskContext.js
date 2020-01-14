@@ -1,26 +1,73 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import firebase from "../database/firebase";
+import { AuthContext } from "./AuthContext";
 
 export const TaskContext = React.createContext();
 
 export const TaskProvider = props => {
   const [tasks, setTasks] = useState([]);
 
-  // INITIALIZE TASKS
+  const { currentUser } = useContext(AuthContext);
+
   useEffect(() => {
-    const unsubscribe = firebase
-      .firestore()
-      .collection("tasks")
-      .onSnapshot(snapshot => {
-        const newTasks = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setTasks(newTasks);
-      });
-    // Very important - Close connection to FB
-    return () => unsubscribe();
-  }, []);
+    if (currentUser) {
+      const unsubscribe = firebase
+        .firestore()
+        .collection("tasks")
+        .where("user_id", "==", currentUser.uid)
+        .onSnapshot(snapshot => {
+          const newTasks = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }));
+          setTasks(newTasks);
+        });
+
+      // Very important - Close connection to FB
+      return () => unsubscribe();
+    }
+  }, [currentUser]);
+
+  // INITIALIZE TASKS
+  // useEffect(() => {
+  //   // const unsubscribe = firebase
+  //   //   .firestore()
+  //   //   .collection("tasks")
+  //   //   .onSnapshot(snapshot => {
+  //   //     const newTasks = snapshot.docs.map(doc => ({
+  //   //       id: doc.id,
+  //   //       ...doc.data()
+  //   //     }));
+
+  //   //     setTasks(newTasks);
+  //   //   });
+
+  //   // const unsubscribe = firebase
+  //   //   .firestore()
+  //   //   .collection("tasks")
+  //   //   .onSnapshot(snapshot => {
+  //   //     const newTasks = snapshot.docs.map(doc => ({
+  //   //       id: doc.id,
+  //   //       ...doc.data()
+  //   //     }));
+  //   //     setTasks(newTasks);
+  //   //   });
+
+  //   const unsubscribe = firebase
+  //     .firestore()
+  //     .collection("tasks")
+  //     .where("user_id", "==", "LwTZWIm8bYhtF2gqhue71zbL3gx1")
+  //     .onSnapshot(snapshot => {
+  //       const newTasks = snapshot.docs.map(doc => ({
+  //         id: doc.id,
+  //         ...doc.data()
+  //       }));
+  //       setTasks(newTasks);
+  //     });
+
+  //   // Very important - Close connection to FB
+  //   return () => unsubscribe();
+  // }, []);
 
   // ADD TASK
   const addTask = (title, days, currentUser) => {
