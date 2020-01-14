@@ -23,18 +23,15 @@ export const TimesProvider = props => {
   }, []);
 
   // ADD TIME
-  const addTime = (currentUser, seconds) => {
-    console.log("user" + JSON.stringify(currentUser));
-    console.log(currentUser.uid);
-    console.log("add time" + seconds);
-    // firebase
-    //   .firestore()
-    //   .collection("times")
-    //   .add({
-    //     task_id: task_id,
-    //     time: time,
-    //     date: date
-    //   });
+  const addTime = (taskId, seconds) => {
+    firebase
+      .firestore()
+      .collection("times")
+      .add({
+        task_id: taskId,
+        time: seconds,
+        date: new Date()
+      });
   };
 
   // // EDIT TASK

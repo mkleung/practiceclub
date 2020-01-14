@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
-// import "./dashboard.scss";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../controller/AuthContext";
 
 const AddTaskModal = ({ addTask }) => {
+  const { currentUser } = useContext(AuthContext);
+
   const [showModal, setShowModal] = useState(false);
 
   const showHideClassName = showModal
@@ -68,7 +70,7 @@ const AddTaskModal = ({ addTask }) => {
       sunday ? "Sunday" : null
     ];
     if (title !== "") {
-      addTask(title, daysArray);
+      addTask(title, daysArray, currentUser);
       setShowModal(false);
     }
   };

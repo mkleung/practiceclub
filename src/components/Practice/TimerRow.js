@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../controller/AuthContext";
 
 const TimerRow = props => {
-  const { currentUser } = useContext(AuthContext);
-
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -27,7 +25,7 @@ const TimerRow = props => {
   // Seconds
   const addTime = () => {
     if (!checked) {
-      props.addTime(currentUser, seconds);
+      props.addTime(props.taskId, seconds);
     }
     setSeconds(0);
     setIsActive(false);

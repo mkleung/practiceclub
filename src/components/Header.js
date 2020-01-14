@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../controller/AuthContext";
 import firebase from "../database/firebase";
 
 const Header = props => {
   const { currentUser } = useContext(AuthContext);
+  const [userId, setUserId] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      setUserId(currentUser.uid);
+    }
+  }, [currentUser]);
 
   return (
     <div>
@@ -78,6 +85,10 @@ const Header = props => {
                 Register
               </Link>
             )}
+
+            <div className="inline-block text-sm px-4 py-2 leading-none text-white">
+              CurrentUser: {userId}
+            </div>
           </div>
         </div>
       </nav>

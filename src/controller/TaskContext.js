@@ -23,13 +23,14 @@ export const TaskProvider = props => {
   }, []);
 
   // ADD TASK
-  const addTask = (title, days) => {
+  const addTask = (title, days, currentUser) => {
     firebase
       .firestore()
       .collection("tasks")
       .add({
         title: title,
-        days: days
+        days: days,
+        user_id: currentUser.uid
       });
   };
 
