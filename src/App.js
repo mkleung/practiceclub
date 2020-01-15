@@ -15,6 +15,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Calendar from "./components/Calendar";
 import Times from "./components/Times";
+import Profile from "./components/Profile";
 
 // https://scotch.io/tutorials/build-a-beautiful-landing-page-with-tailwind-css
 
@@ -29,6 +30,7 @@ function App() {
               <PrivateRoute exact path="/tasks" component={Tasks} />
               <PrivateRoute exact path="/practice" component={Practice} />
               <PrivateRoute exact path="/times" component={Times} />
+              <PrivateRoute exact path="/profile" component={Profile} />
             </TaskProvider>
           </TimesProvider>
 
