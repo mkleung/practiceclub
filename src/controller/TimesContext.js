@@ -1,33 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import firebase from "../database/firebase";
-
+import { AuthContext } from "./AuthContext";
 export const TimesContext = React.createContext();
 
 export const TimesProvider = props => {
   const [times, setTimes] = useState([]);
 
+  const { currentUser } = useContext(AuthContext);
+
   // INITIALIZE TIMES
   useEffect(() => {
-    const unsubscribe = firebase
-      .firestore()
-      .collection("times")
-      .onSnapshot(snapshot => {
-        const newTimes = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setTimes(newTimes);
-      });
-    // Very important - Close connection to FB
-    return () => unsubscribe();
-  }, []);
+    if (currentUser) {
+      const unsubscribe = firebase
+        .firestore()
+        .collection("times")
+        .where("user_id", "==", currentUser.uid)
+        .onSnapshot(snapshot => {
+          const newTimes = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }));
+          setTimes(newTimes);
+        });
+      // Very important - Close connection to FB
+      return () => unsubscribe();
+    }
+  }, [currentUser]);
 
   // ADD TIME
-  const addTime = (taskId, seconds) => {
+  const addTime = (userId, taskId, seconds) => {
     firebase
       .firestore()
       .collection("times")
       .add({
+        user_id: userId,
         task_id: taskId,
         time: seconds,
         date: new Date()

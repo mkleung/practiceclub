@@ -6,6 +6,8 @@ const TimerRow = props => {
   const [isActive, setIsActive] = useState(false);
   const [checked, setChecked] = useState(false);
 
+  const { currentUser } = useContext(AuthContext);
+
   function toggle() {
     setIsActive(!isActive);
   }
@@ -25,7 +27,7 @@ const TimerRow = props => {
   // Seconds
   const addTime = () => {
     if (!checked) {
-      props.addTime(props.taskId, seconds);
+      props.addTime(currentUser.uid, props.taskId, seconds);
     }
     setSeconds(0);
     setIsActive(false);

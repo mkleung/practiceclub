@@ -16,10 +16,10 @@ const Times = () => {
         </div>
 
         <div className="bg-white shadow-md rounded p-10">
-          <table class="table-auto">
+          <table className="table-auto">
             <thead>
               <tr>
-                <th className="px-4 py-2">time_id</th>
+                <th className="px-4 py-2">user_id</th>
                 <th className="px-4 py-2">task_id</th>
                 <th className="px-4 py-2">time (s)</th>
                 <th className="px-4 py-2">date</th>
@@ -28,10 +28,10 @@ const Times = () => {
             <tbody>
               {times.map((item, index) => (
                 <tr key={index} className="border px-4 py-2">
-                  <td class="border px-4 py-2">{item.id}</td>
+                  <td class="border px-4 py-2">{item.user_id}</td>
                   <td class="border px-4 py-2">{item.task_id}</td>
                   <td class="border px-4 py-2">{item.time}</td>
-                  <td class="border px-4 py-2">{item.date}</td>
+                  <td class="border px-4 py-2">date</td>
                 </tr>
               ))}
             </tbody>
